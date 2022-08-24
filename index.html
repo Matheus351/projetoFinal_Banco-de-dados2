@@ -1,24 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet"  href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <title>Projeto</title>
-</head>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+      rel="stylesheet"
+    />
+    <title>ANIMUNDI</title>
+  </head>
 
-<body>
- 
-  <div class="logo">
-    <a href="#">
-        <h1>Animes.com</h1>
-     </a>
- </div>
+  <body>
+    <div class="main">
+      <div class="navbar">
+        <div class="icon">
+          <a href="/index.html">
+            <h2 class="logo">Animundi</h2>
+          </a>
+        </div>
 
+        <div class="menu">
+          <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li><a href="#">Gêneros</a></li>
+            <li><a href="#">Filmes</a></li>
+            <li><a href="#">Mangás</a></li>
+            <li><a href="#">ABOUT</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content">
+        <h1>
+          Os melhores animes em um só lugar <br /><span
+            >Crie sua conta agora e aproveite!</span
+          ><br />
+        </h1>
+
+        <div class="form">
+          <h2>Login</h2>
+          <input type="email" name="email" placeholder="DIgite seu Email..." />
+          <input
+            type="password"
+            name="password"
+            placeholder="Digite sua senha..."
+          />
+          <button class="btn"><a href="#">Entrar</a></button>
+
+          <p class="link">
+            Não tem uma conta?<br />
+            <a href="#">Criar conta</a> aqui
+          </p>
+          <p class="liw">Entre com</p>
+
+          <div class="icons">
+            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="src/script.js"></script>
-</body>
+    <script src="public/js/script.js"></script>
+  </body>
 </html>
