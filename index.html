@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link type="text/css" rel="stylesheet" href="/public/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400;500;600;700;900&display=swap"
       rel="stylesheet"
@@ -13,61 +13,62 @@
   </head>
 
   <body>
-    <div class="main">
-      <div class="navbar">
-        <div class="icon">
-          <a href="/index.html">
-            <h2 class="logo">Animundi</h2>
-          </a>
-        </div>
 
-        <div class="menu">
+    <header class="cabecalho">
+
+      <div class="logo">
+          <a href="#">
+              <h1>Animundi</h1>
+          </a>
+      </div>
+    
+      <nav class="menu">
           <ul>
-            <li><a href="/index.html">HOME</a></li>
-            <li><a href="#">Gêneros</a></li>
-            <li><a href="#">Filmes</a></li>
-            <li><a href="#">Mangás</a></li>
-            <li><a href="#">ABOUT</a></li>
+              <li>
+                  <a href="/">Home</a>
+              </li>
+              <li>
+                  <a href="/register">Adicionar animes</a>
+              </li>
           </ul>
+      </nav>
+    
+    </header>
+
+    <div class="title">
+      <h1>Animes</h1>
+      <p>Sua lista de animes</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="https://i3.wp.com/darkmahou.net/wp-content/uploads/2021/03/1616858304-3791-113611.jpg">
+        <p class="tituloAnime">Nome:Boku no hero</p>
+        <p class="generoAnime">Gênero:Shonem</p>
+        <p class="episodiosAnime">Episódios:65</p>
+        <p class="produtoraAnime">Produtora:Bones</p>
+        <div class="options">
+          <button><a>Editar</a></button>
+          <button><a>Deletar</a></button>
         </div>
       </div>
 
-      <div class="content">
-        <h1>
-          Os melhores animes em um só lugar <br /><span
-            >Crie agora a sua <br />conta e aproveite!</span
-          ><br />
-        </h1>
-
-        <div class="form">
-          <h2>Login</h2>
-          <input type="email" name="email" placeholder="DIgite seu Email..." />
-          <input
-            type="password"
-            name="password"
-            placeholder="Digite sua senha..."
-          />
-          <button class="btn"><a href="#">Entrar</a></button>
-
-          <p class="link">
-            Não tem uma conta?<br />
-            <a href="/public/tela_cadastro.html">Criar conta</a> aqui
-          </p>
-          <p class="liw">Entre com</p>
-
-          <div class="icons">
-            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-google"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
-          </div>
+      <div class="card">
+        <img src="https://i3.wp.com/darkmahou.net/wp-content/uploads/2021/03/1616858304-3791-113611.jpg">
+        <p class="tituloAnime">Nome:Boku no hero</p>
+        <p class="generoAnime">Gênero:Shonem</p>
+        <p class="episodiosAnime">Episódios:65</p>
+        <p class="produtoraAnime">Produtora:Bones</p>
+        <div class="options">
+          <a class="edit" href="/edit"><button>Editar</button></a>
+          <a class="delete"><button>Deletar</button></a>
         </div>
       </div>
     </div>
-
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    
+     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="public/js/script.js"></script>
+    <script src="/js/script.js"></script>
   </body>
 </html>

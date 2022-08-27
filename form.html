@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>ANIMUNDI</title>
+  </head>
+<body>
+
+    <header class="cabecalho">
+
+        <div class="logo">
+            <a href="#">
+                <h1>Animundi</h1>
+            </a>
+        </div>
+      
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+            </ul>
+        </nav>
+      
+      </header>
+
+    <div class="form" id="form">
+        <form class="formulario" method="post" action="/save/phones">
+            <p> </option>Preencha os campos</p>
+    
+            <div class="field">
+                <label for="nome">Nome do anime:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome*" required>
+            </div> 
+    
+            <div class="field">
+                <label for="episodios">Episódios</label>
+                <input type="number" id="episodios" name="episodios" placeholder="Qtde. episódios">
+            </div>
+    
+            <div class="field">
+                <label for="genero">Genero</label>
+                <input type="text" id="genero" name="genero" placeholder="Especifique o gênero*" required>
+            </div>
+
+            <div class="field">
+                <label for="produtora">Produtora</label>
+                <input type="text" id="produtora" name="produtora" placeholder="Especifique a produtora*" required>
+            </div>
+    
+            <div class="field">
+                <label for="imagem">Imagem</label>
+                <input type="text" id="imagem" name="imagem" placeholder="Especifique um link para imagem*" required>
+            </div>
+    
+            <input type="submit" value="Salvar">
+        </form> 
+</body>
+</html>

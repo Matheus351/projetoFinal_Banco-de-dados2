@@ -1,12 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require('../database/mongo');
 
-const phoneSchema = new mongoose.Schema({
+const animeSchema = new mongoose.Schema({
     nome: String,
     episodios: Number,
     estudio:String,
-    genero:String
+    genero:String,
+    produtora:String,
+    imagem:String
 });
 
-const Phone = mongoose.model('smartphone', phoneSchema);
+const Anime = mongoose.model('anime', animeSchema);
 
-module.exports = Phone;
+module.exports = Anime;
