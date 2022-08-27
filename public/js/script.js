@@ -102,8 +102,6 @@ function handleEdit(idAnime, nome, genero, episodios, produtora, imagem){
 `
 
 const form = document.querySelector('.editAnime')
-form.appendChild(p)
-
 form.innerHTML=formEdit
 
 }

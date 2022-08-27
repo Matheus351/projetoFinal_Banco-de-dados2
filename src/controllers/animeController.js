@@ -1,14 +1,26 @@
 const Anime = require('../models/Anime');
 const mongoose = require('../database/mongo')
+const redisClient = require('../database/redis')
 
 const getAnime = async (req, resp) =>{
     let id = mongoose.Types.ObjectId(req.params.id);
-    const anime = await Anime.find({_id:id},{__v:false});
-    if(anime.length > 0){
+
+    const result = await redisClient.get(req.params.id);
+    if(result!=null){
+        const anime = JSON.parse(result);
         resp.status(200).send(anime);
     }else{
-        resp.status(400).send('Anime não encontrado');
+        const anime = await Anime.find({_id:id},{__v:false});
+        if(anime.length > 0){
+            resp.status(200).send(anime);
+            await redisClient.set(req.params.id, JSON.stringify(anime),{EX: 4000});
+        }else{
+            resp.status(400).send('Anime não encontrado');
+        }
+
     }
+
+   
 };
 
 
