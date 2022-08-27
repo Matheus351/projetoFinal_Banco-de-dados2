@@ -13,6 +13,12 @@ body{
   align-items: center;
 }
 
+.titleEdit{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
 .grid{
   padding: 10px;
   display: grid;
@@ -55,6 +61,7 @@ button{
   color: #ffffff;
   background-color: #ff5100bb;
   border-style: none;
+  margin: 2px;
   height: 30px;
   width: 40%;
   border-radius: 5px;
@@ -66,6 +73,10 @@ li a{
   color: #eee;
   font-size: 1.1em;
   padding: 10px 15px;
+}
+
+img{
+  max-height: 325px;
 }
 
 .menu a:hover {

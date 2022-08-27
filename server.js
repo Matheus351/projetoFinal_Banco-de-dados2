@@ -32,7 +32,7 @@ app.get('/animes', animeController.getAllAnimes);
 
 app.get('/animes/:id', animeController.getAnime);
 
-app.post('animes/:id', animeController.updateAnime);
+app.post('/animes/:id', animeController.updateAnime);
 
 app.delete('/animes/:id', animeController.deleteAnime);
 

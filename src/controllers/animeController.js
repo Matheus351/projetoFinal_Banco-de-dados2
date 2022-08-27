@@ -35,7 +35,7 @@ const getAllAnimes = async (req, resp) =>{
 const updateAnime = async (req, resp) =>{
     
   let id = mongoose.Types.ObjectId(req.params.id);
-    Phone.findOneAndUpdate(
+    Anime.findOneAndUpdate(
     {_id:id},{$set:{nome:req.body.nome,episodios:req.body.episodios,estudio:req.body.estudio,genero:req.body.genero,imagem:req.body.imagem}}
         ).exec(function(err,res){
             if(err) {

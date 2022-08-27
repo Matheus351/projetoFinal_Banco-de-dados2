@@ -14,7 +14,10 @@ function loadContent(arquivoJson){
   const p3 = document.createElement('p')
   const p4 = document.createElement('p')
   const divOptions = document.createElement('div')
+  const a1 = document.createElement('a')
+  const a2 = document.createElement('a')
 
+  a1.setAttribute('href','#editAnime')
   card.setAttribute('class','card')
   img.setAttribute('src',anime.imagem)
   p1.setAttribute('class','tituloAnime')
@@ -28,6 +31,7 @@ function loadContent(arquivoJson){
   p3.innerText=`Episódios:${anime.episodios}`
   p4.innerText=`Produtora:${anime.produtora}`
 
+  
 
   const idAnime = anime._id
   card.setAttribute('id',idAnime)
@@ -46,8 +50,10 @@ function loadContent(arquivoJson){
   card.appendChild(p2)
   card.appendChild(p3)
   card.appendChild(p4)
-  divOptions.appendChild(buttonEdit)
-  divOptions.appendChild(buttonDelete)
+  a1.appendChild(buttonEdit)
+  a2.appendChild(buttonDelete)
+  divOptions.appendChild(a1)
+  divOptions.appendChild(a2)
   card.appendChild(divOptions)
 
   grid.appendChild(card)
@@ -55,9 +61,13 @@ function loadContent(arquivoJson){
 }
 }
       
-async function handleEdit(idAnime, nome, genero, episodios, produtora, imagem){
+function handleEdit(idAnime, nome, genero, episodios, produtora, imagem){
 
  const formEdit = `
+ <div class="titleEdit">
+      <h2>Formulário de edição</h2>
+      <p>Você está editando o anime ${nome}</p>
+ </div>
  <div class="form" id="form">
  <form class="formulario" method="post" action="/animes/${idAnime}">
      <p> </option>Preencha os campos</p>
@@ -90,18 +100,22 @@ async function handleEdit(idAnime, nome, genero, episodios, produtora, imagem){
      <input type="submit" value="Salvar">
  </form> 
 `
-const form = document.querySelector('.form')
+
+const form = document.querySelector('.editAnime')
+form.appendChild(p)
+
 form.innerHTML=formEdit
 
 }
 
 
 
-function handleDelete(idPhone){
+function handleDelete(idAnime){
     
-    axios.delete(`http://localhost:3000/phones/${idPhone}`)
-.then(resp => window.location.href="http://localhost:3000")
-.catch(err=>{
+ axios.delete(`http://localhost:3000/animes/${idAnime}`)
+ .then(resp => window.location.href="http://localhost:3000")
+ .catch(err=>{
     console.log(err)
-})
+  })
+
 }
