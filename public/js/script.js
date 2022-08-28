@@ -45,6 +45,7 @@ function loadContent(arquivoJson){
   buttonEdit.setAttribute('onclick', `handleEdit('${idAnime}','${anime.nome}','${anime.genero}','${anime.episodios}','${anime.produtora}','${anime.imagem}');`);
   buttonDelete.setAttribute('onclick', `handleDelete('${idAnime}');`);
  
+
   card.appendChild(img)
   card.appendChild(p1)
   card.appendChild(p2)
@@ -109,7 +110,7 @@ form.innerHTML=formEdit
 
 
 function handleDelete(idAnime){
-    
+    console.log('deletando...')
  axios.delete(`http://localhost:3000/animes/${idAnime}`)
  .then(resp => window.location.href="http://localhost:3000")
  .catch(err=>{

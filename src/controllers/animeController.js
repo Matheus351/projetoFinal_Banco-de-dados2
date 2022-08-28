@@ -1,6 +1,9 @@
 const Anime = require('../models/Anime');
 const mongoose = require('../database/mongo')
 const redisClient = require('../database/redis')
+const neo4j = require('../database/neo4j')
+
+
 
 const getAnime = async (req, resp) =>{
     let id = mongoose.Types.ObjectId(req.params.id);
@@ -23,8 +26,19 @@ const getAnime = async (req, resp) =>{
    
 };
 
+const addInNeo4j = async(req)=>{
+    const session = neo4j.session()
+
+    await session.run(`CREATE(a:Anime{nome:"${req.body.nome}",genero:"${req.body.genero}",episodios:${req.body.episodios},produtora:"${req.body.produtora}"})
+    WITH a MATCH(g:Genero{genero:"${req.body.genero}"})
+    CREATE(a)-[:GENERO_DE]->(g)`)
+
+    await session.close()
+}
 
 const addAnime = async (req, resp) =>{
+
+   await addInNeo4j(req).catch(err=>console.log(err))
 
     const anime = new Anime(req.body);
     anime.save()

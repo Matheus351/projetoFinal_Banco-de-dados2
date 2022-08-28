@@ -19,10 +19,9 @@ app.get("/register", (req, res) => {
     res.sendFile(__dirname + "/form.html");
 });
 
-app.get("/edit", (req, res) => {
-    res.sendFile(__dirname + "/formEdit.html");
+app.get("/anime", (req, res) => {
+    res.sendFile(__dirname + "/anime.html");
 });
-
 
 const animeController = require('./src/controllers/animeController');
 
