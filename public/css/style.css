@@ -19,7 +19,7 @@ body{
   align-items: center;
   margin-top: 10px;
 }
-.grid{
+.grid, .filtered{
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(5,1fr);
@@ -27,6 +27,8 @@ body{
   width: 100%;
   margin: 0 auto;
 }
+
+
 
 .card{
   display: flex;

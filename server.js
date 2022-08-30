@@ -31,6 +31,10 @@ app.get('/animes', animeController.getAllAnimes);
 
 app.get('/animes/:id', animeController.getAnime);
 
+app.get('/shounen', animeController.searchAnimesShounen);
+
+app.get('/fantasia', animeController.searchAnimesFantasy);
+
 app.post('/animes/:id', animeController.updateAnime);
 
 app.delete('/animes/:id', animeController.deleteAnime);

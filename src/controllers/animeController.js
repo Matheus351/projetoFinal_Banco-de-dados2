@@ -29,7 +29,7 @@ const getAnime = async (req, resp) =>{
 const addInNeo4j = async(req)=>{
     const session = neo4j.session()
 
-    await session.run(`CREATE(a:Anime{nome:"${req.body.nome}",genero:"${req.body.genero}",episodios:${req.body.episodios},produtora:"${req.body.produtora}"})
+    await session.run(`CREATE(a:Anime{nome:"${req.body.nome}",genero:"${req.body.genero}",episodios:${req.body.episodios},produtora:"${req.body.produtora}",imagem:"${req.body.imagem}"})
     WITH a MATCH(g:Genero{genero:"${req.body.genero}"})
     CREATE(a)-[:GENERO_DE]->(g)`)
 
@@ -37,7 +37,7 @@ const addInNeo4j = async(req)=>{
 }
 
 const addAnime = async (req, resp) =>{
-
+ 
    await addInNeo4j(req).catch(err=>console.log(err))
 
     const anime = new Anime(req.body);
@@ -73,8 +73,33 @@ const updateAnime = async (req, resp) =>{
 }
 
 const deleteAnime = async (req, resp)=>{
-
+   
     let id = mongoose.Types.ObjectId(req.params.id);
+
+    const session = neo4j.session()
+
+    const anime = await Anime.find({_id:id},{__v:false});
+   
+    try {
+       const result = await session.run(`MATCH(a:Anime{nome:"${anime[0].nome}"})
+       DETACH DELETE a`) 
+       const animesShounen = []
+       const animesFound = result.records
+
+       animesFound.forEach((record, index, animesFound)=>{
+           const anime = animesFound[index].get(0).properties
+           animesShounen.push(anime)
+       } 
+       )
+    } catch (error) {
+        console.log('Erro na busca:',error)
+        resp.status(400).send('Falha ao encontrar animes')
+    }
+
+    await session.close()
+
+
+    
     const result = await Anime.deleteOne({_id:id});
 
     if(result.deletedCount > 0){
@@ -85,4 +110,50 @@ const deleteAnime = async (req, resp)=>{
 };
 
 
-module.exports = {addAnime, getAllAnimes, updateAnime, deleteAnime, getAnime};
+const searchAnimesShounen = async(req,resp)=>{
+   
+    const session = neo4j.session()
+    
+    try {
+       const result = await session.run(`MATCH(a:Anime)-[:GENERO_DE]->(g:Genero{genero:"Shounen"}) return a`) 
+       const animesShounen = []
+       const animesFound = result.records
+
+       animesFound.forEach((record, index, animesFound)=>{
+           const anime = animesFound[index].get(0).properties
+           animesShounen.push(anime)
+       } 
+       )
+       resp.status(200).send(animesShounen)
+    } catch (error) {
+        console.log('Erro na busca:',error)
+        resp.status(400).send('Falha ao encontrar animes')
+    }
+
+    await session.close()
+}
+
+const searchAnimesFantasy = async(req,resp)=>{
+   
+    const session = neo4j.session()
+    
+    try {
+       const result = await session.run(`MATCH(a:Anime)-[:GENERO_DE]->(g:Genero{genero:"Fantasia"}) return a`) 
+       const animesShounen = []
+       const animesFound = result.records
+
+       animesFound.forEach((record, index, animesFound)=>{
+           const anime = animesFound[index].get(0).properties
+           animesShounen.push(anime)
+          
+       } 
+       )
+       resp.status(200).send(animesShounen)
+    } catch (error) {
+        console.log('Erro na busca:',error)
+        resp.status(400).send('Falha ao encontrar animes')
+    }
+
+    await session.close()
+}
+module.exports = {addAnime, getAllAnimes, updateAnime, deleteAnime, getAnime, searchAnimesShounen,searchAnimesFantasy};

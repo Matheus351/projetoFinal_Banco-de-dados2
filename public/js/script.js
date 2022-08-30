@@ -110,7 +110,7 @@ form.innerHTML=formEdit
 
 
 function handleDelete(idAnime){
-    console.log('deletando...')
+    
  axios.delete(`http://localhost:3000/animes/${idAnime}`)
  .then(resp => window.location.href="http://localhost:3000")
  .catch(err=>{
@@ -118,3 +118,39 @@ function handleDelete(idAnime){
   })
 
 }
+
+const searchAnimes = (genero)=>{
+   
+    
+     axios.get(`http://localhost:3000/${genero}`)
+    .then(resp=>loadAnimes(resp.data))
+    .catch(err=>console.log(err))
+
+   
+    function loadAnimes(arrayAnimes){
+      
+      const gridFiltered = document.querySelector('.grid')
+      let stringHtml = ''
+      for (const anime of arrayAnimes){
+          console.log(anime.nome)
+
+        const card = `<div class="card">
+        <img src="${anime.imagem}">
+        <p>Título:${anime.nome}</p>
+        <p>Gễnero:${anime.genero}</p>
+        <p>Episódios:${anime.episodios.low}</p>
+        <p>Produtora:${anime.produtora}</p>
+        <div class="options">
+        <a><button>Editar</button></a>
+        <a><button>Deletar</button></a>
+      </div>
+        </div>
+       `
+       stringHtml+=card
+      
+       gridFiltered.innerHTML=stringHtml
+      
+      }
+    } 
+}
+

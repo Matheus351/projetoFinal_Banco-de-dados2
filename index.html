@@ -40,17 +40,22 @@
       <p>Sua lista de animes</p>
     </div>
 
+    <form action="" id="genero">
+      Ordenar por:
+      <input type="radio" name="genero" value="shounen" onclick="searchAnimes(this.value)">Shounen
+      <input type="radio" name="genero" value="fantasia" onclick="searchAnimes(this.value)">Fantasy
+    </form>
+
     <div class="grid">
 
-     
     </div>
-
 
     <div  id="editAnime" class="editAnime">
       <p class="edit"></p>
     </div>
     
-     
+
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/script.js"></script>
   </body>
